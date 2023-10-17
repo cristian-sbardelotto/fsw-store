@@ -1,6 +1,6 @@
-import { Button } from './ui/button';
+import { Button } from './ui/Button';
 import { Card } from './ui/Card';
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from './ui/Sheet';
 
 import {
   MenuIcon,
