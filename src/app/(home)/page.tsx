@@ -1,3 +1,4 @@
+import { Categories } from '@/components/Categories';
 import Image from 'next/image';
 
 export default function Home() {
@@ -9,6 +10,10 @@ export default function Home() {
         className='h-auto w-full'
         sizes='100vw'
       />
+
+      <div className='mt-8'>
+        <Categories />
+      </div>
     </main>
   );
 }
