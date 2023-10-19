@@ -12,7 +12,8 @@ export function computeProductTotalPrice(
     };
   }
 
-  const totalPrice = +product.basePrice * (product.discountPercentage / 100);
+  const discountValue = +product.basePrice * (product.discountPercentage / 100);
+  const totalPrice = +product.basePrice - discountValue;
 
   return {
     ...product,
