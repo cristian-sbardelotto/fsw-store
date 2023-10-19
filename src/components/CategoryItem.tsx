@@ -1,5 +1,5 @@
 import { Category } from '@prisma/client';
-import { Badge } from './ui/badge';
+import { Badge } from './ui/Badge';
 import {
   HeadphonesIcon,
   KeyboardIcon,

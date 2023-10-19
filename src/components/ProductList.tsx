@@ -1,5 +1,6 @@
 import { Product } from '@prisma/client';
 import { ProductItem } from './ProductItem';
+import { computeProductTotalPrice } from '@/helpers/product';
 
 type ProductListProps = {
   products: Product[];
@@ -11,7 +12,7 @@ export function ProductList({ products }: ProductListProps) {
       {products.map(product => (
         <ProductItem
           key={product.id}
-          product={product}
+          product={computeProductTotalPrice(product)}
         />
       ))}
     </div>
