@@ -1,14 +1,20 @@
 'use client';
 
+import Link from 'next/link';
+
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
   SheetTrigger,
 } from './ui/Sheet';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar';
+import { Separator } from './ui/Separator';
+
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import {
@@ -20,8 +26,6 @@ import {
   HomeIcon,
   LogOut,
 } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Separator } from './ui/separator';
 
 export function Header() {
   const { data, status } = useSession();
@@ -95,28 +99,39 @@ export function Header() {
                   Fazer login
                 </Button>
               )}
+              <SheetClose asChild>
+                <Link href='/catalog'>
+                  <Button
+                    variant='outline'
+                    className='w-full gap-2'
+                  >
+                    <HomeIcon size={16} />
+                    Início
+                  </Button>
+                </Link>
+              </SheetClose>
 
-              <Button
-                variant='outline'
-                className='w-full gap-2'
-              >
-                <HomeIcon size={16} />
-                Início
-              </Button>
-              <Button
-                variant='outline'
-                className='w-full gap-2'
-              >
-                <PercentIcon size={16} />
-                Ofertas
-              </Button>
-              <Button
-                variant='outline'
-                className='w-full gap-2'
-              >
-                <ListOrderedIcon size={16} />
-                Catálogo
-              </Button>
+              <SheetClose asChild>
+                <Button
+                  variant='outline'
+                  className='w-full gap-2'
+                >
+                  <PercentIcon size={16} />
+                  Ofertas
+                </Button>
+              </SheetClose>
+
+              <SheetClose asChild>
+                <Link href='/catalog'>
+                  <Button
+                    variant='outline'
+                    className='w-full gap-2'
+                  >
+                    <ListOrderedIcon size={16} />
+                    Catálogo
+                  </Button>
+                </Link>
+              </SheetClose>
             </div>
           </SheetContent>
         </Sheet>
