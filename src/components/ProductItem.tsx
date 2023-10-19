@@ -11,8 +11,8 @@ type ProductItemProps = {
 
 export function ProductItem({ product }: ProductItemProps) {
   return (
-    <div className='flex flex-col gap-4 max-w-[170px]'>
-      <div className='relative flex items-center justify-center bg-accent rounded-lg h-[170px] w-[170px]'>
+    <div className='flex flex-col gap-4'>
+      <div className='relative flex items-center justify-center bg-accent rounded-lg h-[170px] w-full'>
         <Image
           src={product.imageUrls[0]}
           height={0}

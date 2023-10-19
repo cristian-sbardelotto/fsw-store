@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { CategoryCard } from '@/components/CategoryCard';
 import { Badge } from '@/components/ui/Badge';
 import { prismaClient } from '@/lib/prisma';
@@ -19,10 +21,12 @@ export default async function CatalogPage() {
 
       <div className='grid grid-cols-2 gap-8'>
         {categories.map(category => (
-          <CategoryCard
-            category={category}
+          <Link
+            href={`/category/${category.slug}`}
             key={category.id}
-          />
+          >
+            <CategoryCard category={category} />
+          </Link>
         ))}
       </div>
     </div>
