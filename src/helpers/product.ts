@@ -1,10 +1,14 @@
 import { Product } from '@prisma/client';
 
-export function computeProductTotalPrice(product: Product) {
+import { ProductWithTotalPriceProps } from '@/types/product';
+
+export function computeProductTotalPrice(
+  product: Product
+): ProductWithTotalPriceProps {
   if (product.discountPercentage === 0) {
     return {
       ...product,
-      totalPrice: product.basePrice,
+      totalPrice: +product.basePrice,
     };
   }
 
