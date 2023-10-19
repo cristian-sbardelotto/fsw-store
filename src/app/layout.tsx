@@ -23,11 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='pt-br'>
-      <body className={poppins.className}>
+      <body className={`${poppins.className} flex flex-col`}>
         <AuthProvider>
           <Header />
-
-          {children}
+          <div className='flex-1'>{children}</div>
 
           <Footer />
         </AuthProvider>
