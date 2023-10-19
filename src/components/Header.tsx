@@ -8,7 +8,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTrigger,
 } from './ui/Sheet';
@@ -136,9 +135,11 @@ export function Header() {
           </SheetContent>
         </Sheet>
 
-        <h1 className='font-semibold text-lg'>
-          <span className='text-primary'>FSW</span>Store
-        </h1>
+        <Link href='/'>
+          <h1 className='font-semibold text-lg'>
+            <span className='text-primary'>FSW</span> Store
+          </h1>
+        </Link>
 
         <Button
           size='icon'
