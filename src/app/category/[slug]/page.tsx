@@ -3,16 +3,9 @@ import { Badge } from '@/components/ui/Badge';
 import { categoryIcons } from '@/data/categoryIcons';
 import { computeProductTotalPrice } from '@/helpers/product';
 import { prismaClient } from '@/lib/prisma';
+import { SlugRouteParams } from '@/types/params';
 
-type CategoryProductsProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function CategoryProducts({
-  params,
-}: CategoryProductsProps) {
+export default async function CategoryProducts({ params }: SlugRouteParams) {
   const category = await prismaClient.category.findFirst({
     where: {
       slug: params.slug,
