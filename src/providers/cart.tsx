@@ -1,26 +1,6 @@
 'use client';
 
-import { createContext } from 'react';
-
-import { Product } from '@prisma/client';
-
-type CartProduct = Product & {
-  quantity: number;
-};
-
-type CartContextProps = {
-  products: CartProduct[];
-  cartBasePrice: number;
-  cartTotalPrice: number;
-  cartTotalDiscount: number;
-};
-
-const CartContext = createContext<CartContextProps>({
-  products: [],
-  cartBasePrice: 0,
-  cartTotalDiscount: 0,
-  cartTotalPrice: 0,
-});
+import { CartContext } from '@/contexts/cart';
 
 type CartContextProviderProps = {
   children: React.ReactNode;
