@@ -13,6 +13,7 @@ import {
 } from './ui/Sheet';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar';
 import { Separator } from './ui/Separator';
+import { ShoppingCart } from './ShoppingCart';
 
 import { signIn, signOut, useSession } from 'next-auth/react';
 
@@ -141,12 +142,20 @@ export function Header() {
           </h1>
         </Link>
 
-        <Button
-          size='icon'
-          variant='outline'
-        >
-          <ShoppingCartIcon />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              size='icon'
+              variant='outline'
+            >
+              <ShoppingCartIcon />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent>
+            <ShoppingCart />
+          </SheetContent>
+        </Sheet>
       </Card>
     </header>
   );
