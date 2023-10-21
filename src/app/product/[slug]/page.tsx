@@ -36,7 +36,10 @@ export default async function ProductDetailsPage({ params }: SlugRouteParams) {
 
       <ProductInfo product={computeProductTotalPrice(product)} />
 
-      <ProductList products={product.category.products} />
+      <div>
+        <p className='mb-3 pl-5 font-bold uppercase'>Produtos Relacionados</p>
+        <ProductList products={product.category.products} />
+      </div>
     </div>
   );
 }
