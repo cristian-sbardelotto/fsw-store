@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { AuthProvider } from '@/providers/auth';
+import { CartContextProvider } from '@/providers/cart';
 import './globals.css';
 
 const poppins = Poppins({
@@ -25,10 +26,12 @@ export default function RootLayout({
     <html lang='pt-br'>
       <body className={`${poppins.className} flex flex-col`}>
         <AuthProvider>
-          <Header />
-          <div className='flex-1'>{children}</div>
+          <CartContextProvider>
+            <Header />
+            <div className='flex-1'>{children}</div>
 
-          <Footer />
+            <Footer />
+          </CartContextProvider>
         </AuthProvider>
       </body>
     </html>
