@@ -2,9 +2,9 @@
 
 import { createContext, useContext, useState } from 'react';
 
-import { Product } from '@prisma/client';
+import { ProductWithTotalPriceProps } from '@/types/product';
 
-type CartProduct = Product & {
+export type CartProduct = ProductWithTotalPriceProps & {
   quantity: number;
 };
 
@@ -32,6 +32,27 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [products, setProducts] = useState<CartProduct[]>([]);
 
   function addProduct(product: CartProduct) {
+    const productIsAlreadyOnCart = products.some(
+      cartProduct => cartProduct.id === product.id
+    );
+
+    if (productIsAlreadyOnCart) {
+      setProducts(previous =>
+        previous.map(cartProduct => {
+          if (cartProduct.id === product.id) {
+            return {
+              ...cartProduct,
+              quantity: cartProduct.quantity + product.quantity,
+            };
+          }
+
+          return cartProduct;
+        })
+      );
+
+      return;
+    }
+
     setProducts(previous => [...previous, product]);
   }
 
