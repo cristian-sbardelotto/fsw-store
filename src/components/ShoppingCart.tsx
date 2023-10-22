@@ -8,7 +8,7 @@ import { CartItem } from './CartItem';
 import { computeProductTotalPrice } from '@/helpers/product';
 import { Separator } from './ui/Separator';
 import { ScrollArea } from './ui/ScrollArea';
-import { Button } from './ui/Button';
+import { Button } from '@/components/ui/Button';
 
 export function ShoppingCart() {
   const { products, total, subTotal, totalDiscount } = useContext(CartContext);
