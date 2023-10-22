@@ -12,6 +12,9 @@ export default async function DealsPage() {
         gt: 0,
       },
     },
+    orderBy: {
+      discountPercentage: 'desc',
+    },
   });
 
   return (
