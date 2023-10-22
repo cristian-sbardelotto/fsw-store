@@ -3,7 +3,7 @@
 import { useState, useContext } from 'react';
 
 import { ProductWithTotalPriceProps } from '@/types/product';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { DiscountBadge } from './DiscountBadge';
 import { CartContext } from '@/providers/cart';
 

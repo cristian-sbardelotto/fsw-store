@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { Card } from './ui/Card';
 import {
   Sheet,
