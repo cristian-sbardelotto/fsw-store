@@ -6,9 +6,10 @@ import { Badge } from './ui/Badge';
 import { ShoppingCartIcon } from 'lucide-react';
 import { CartItem } from './CartItem';
 import { computeProductTotalPrice } from '@/helpers/product';
+import { Separator } from './ui/Separator';
 
 export function ShoppingCart() {
-  const { products } = useContext(CartContext);
+  const { products, total, subTotal, totalDiscount } = useContext(CartContext);
 
   return (
     <div className='flex flex-col gap-8'>
@@ -35,6 +36,36 @@ export function ShoppingCart() {
           <p className='text-xl'>Vamos fazer compras?</p>
         </div>
       )}
+
+      <div className='flex flex-col gap-3'>
+        <Separator />
+
+        <div className='flex items-center justify-between text-xs'>
+          <p>Subtotal</p>
+          <p>R$ {subTotal.toFixed(2)}</p>
+        </div>
+
+        <Separator />
+
+        <div className='flex items-center justify-between text-xs'>
+          <p>Entrega</p>
+          <p className='uppercase'>Grátis</p>
+        </div>
+
+        <Separator />
+
+        <div className='flex items-center justify-between text-xs'>
+          <p>Descontos</p>
+          <p>- R$ {totalDiscount.toFixed(2)}</p>
+        </div>
+
+        <Separator />
+
+        <div className='flex items-center justify-between text-sm font-bold'>
+          <p>Total</p>
+          <p>R$ {total.toFixed(2)}</p>
+        </div>
+      </div>
     </div>
   );
 }
