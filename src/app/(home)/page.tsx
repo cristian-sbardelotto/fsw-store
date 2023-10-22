@@ -31,10 +31,11 @@ export default async function Home() {
   });
 
   return (
-    <main className='space-y-8'>
+    <main className='space-y-8 overflow-hidden'>
       <ImageBanner
         src='/banner-home-01.png'
         alt='Até 55% de desconto esse mês!'
+        className='md:p-0 md:rounded-none md:scale-[1.1]'
       />
 
       <div className='px-5'>
