@@ -100,7 +100,7 @@ export function Header() {
                 </Button>
               )}
               <SheetClose asChild>
-                <Link href='/catalog'>
+                <Link href='/'>
                   <Button
                     variant='outline'
                     className='w-full gap-2'
@@ -112,13 +112,15 @@ export function Header() {
               </SheetClose>
 
               <SheetClose asChild>
-                <Button
-                  variant='outline'
-                  className='w-full gap-2'
-                >
-                  <PercentIcon size={16} />
-                  Ofertas
-                </Button>
+                <Link href='/deals'>
+                  <Button
+                    variant='outline'
+                    className='w-full gap-2'
+                  >
+                    <PercentIcon size={16} />
+                    Ofertas
+                  </Button>
+                </Link>
               </SheetClose>
 
               <SheetClose asChild>
