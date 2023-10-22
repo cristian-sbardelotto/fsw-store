@@ -20,14 +20,21 @@ export function ShoppingCart() {
         Carrinho
       </Badge>
 
-      {products.map(product => (
-        <div
-          key={product.id}
-          className='flex flex-col gap-5'
-        >
-          <CartItem product={computeProductTotalPrice(product) as any} />
+      {products.length > 0 ? (
+        products.map(product => (
+          <div
+            key={product.id}
+            className='flex flex-col gap-5'
+          >
+            <CartItem product={computeProductTotalPrice(product) as any} />
+          </div>
+        ))
+      ) : (
+        <div className='text-center'>
+          <p className='text-lg'>Carrinho vazio</p>
+          <p className='text-xl'>Vamos fazer compras?</p>
         </div>
-      ))}
+      )}
     </div>
   );
 }
