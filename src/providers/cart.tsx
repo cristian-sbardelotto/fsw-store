@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { ProductWithTotalPriceProps } from '@/types/product';
 
@@ -40,8 +40,24 @@ type CartContextProviderProps = {
   children: React.ReactNode;
 };
 
+const PRODUCTS_STORAGE_KEY = '@fsw-store/products';
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  const [products, setProducts] = useState<CartProduct[]>(
+    JSON.parse(
+      (typeof localStorage !== 'undefined' &&
+        localStorage.getItem(PRODUCTS_STORAGE_KEY)) ||
+        '[]'
+    )
+  );
+
+  useEffect(() => {
+    const isBrowser = typeof window !== 'undefined';
+
+    if (isBrowser) {
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    }
+  }, [products]);
 
   const subTotal = useMemo(() => {
     return products.reduce((acc, product) => {
