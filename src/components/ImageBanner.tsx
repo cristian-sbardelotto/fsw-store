@@ -1,11 +1,13 @@
 import Image, { ImageProps } from 'next/image';
 
-export function ImageBanner({ src, alt, ...props }: ImageProps) {
+import { twMerge } from 'tailwind-merge';
+
+export function ImageBanner({ src, alt, className, ...props }: ImageProps) {
   return (
     <Image
       src={src}
       alt={alt}
-      className='h-auto w-full px-5'
+      className={twMerge('h-auto w-full px-5', className)}
       width={0}
       height={0}
       sizes='100vw'

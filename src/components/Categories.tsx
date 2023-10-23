@@ -5,7 +5,7 @@ export async function Categories() {
   const categories = await prismaClient.category.findMany();
 
   return (
-    <div className='grid grid-cols-2 gap-x-4 gap-y-2'>
+    <button className='grid grid-cols-2 gap-x-4 gap-y-2 md:flex md:justify-center md:flex-wrap md:items-center'>
       {categories &&
         categories.map(category => (
           <CategoryItem
@@ -13,6 +13,6 @@ export async function Categories() {
             key={category.id}
           />
         ))}
-    </div>
+    </button>
   );
 }
