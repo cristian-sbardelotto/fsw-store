@@ -35,7 +35,13 @@ export default async function Home() {
       <ImageBanner
         src='/banner-home-01.png'
         alt='Até 55% de desconto esse mês!'
-        className='md:p-0 md:rounded-none md:scale-[1.1]'
+        className='md:hidden'
+      />
+
+      <ImageBanner
+        src='/deals-banner.png'
+        alt='Até 55% de desconto esse mês!'
+        className='hidden md:block md:p-0'
       />
 
       <div className='px-5'>
