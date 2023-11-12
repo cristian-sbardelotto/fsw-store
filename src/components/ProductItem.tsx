@@ -12,8 +12,8 @@ type ProductItemProps = {
 export function ProductItem({ product }: ProductItemProps) {
   return (
     <Link href={`/product/${product.slug}`}>
-      <div className='flex flex-col gap-4'>
-        <div className='relative flex items-center justify-center bg-accent rounded-lg h-[170px] w-full'>
+      <div className='flex flex-col gap-4 group'>
+        <div className='relative flex items-center justify-center bg-accent rounded-lg h-[170px] w-full aspect-square group-hover:brightness-125 transition-all'>
           <Image
             src={product.imageUrls[0]}
             height={0}

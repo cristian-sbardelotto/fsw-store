@@ -12,7 +12,7 @@ export function ProductList({ products }: ProductListProps) {
       {products.map(product => (
         <div
           key={product.id}
-          className='w-[170px] max-w-[170px]'
+          className='w-[170px]'
         >
           <ProductItem product={computeProductTotalPrice(product)} />
         </div>
