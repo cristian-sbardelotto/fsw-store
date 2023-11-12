@@ -25,7 +25,7 @@ export default async function CategoryProducts({ params }: SlugRouteParams) {
         {category?.name}
       </Badge>
 
-      <div className='grid grid-cols-2 gap-8'>
+      <div className='grid grid-cols-2 gap-8 md:flex md:gap-4 md:flex-wrap'>
         {category?.products.map(product => (
           <ProductItem
             product={computeProductTotalPrice(product)}

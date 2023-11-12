@@ -19,7 +19,7 @@ export default async function CatalogPage() {
         Catálogo
       </Badge>
 
-      <div className='grid grid-cols-2 gap-8'>
+      <div className='grid grid-cols-2 gap-8 md:container md:mx-auto'>
         {categories.map(category => (
           <Link
             href={`/category/${category.slug}`}
