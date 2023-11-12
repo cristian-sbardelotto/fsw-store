@@ -1,4 +1,8 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Dracula"
+  "workbench.colorTheme": "Dracula",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  }
 }
