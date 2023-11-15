@@ -26,14 +26,24 @@ export function Header() {
         </Link>
 
         <nav className='hidden md:flex gap-7 items-center text-white font-bold'>
-          <Link href='/catalog'>Catálogo</Link>
+          <Link
+            href='/catalog'
+            className='hover:text-gray-400 transition-colors'
+          >
+            Catálogo
+          </Link>
 
           <Separator
             orientation='vertical'
             className='h-6'
           />
 
-          <Link href='/deals'>Ofertas</Link>
+          <Link
+            href='/deals'
+            className='hover:text-gray-400 transition-colors'
+          >
+            Ofertas
+          </Link>
         </nav>
 
         <div className='flex gap-7'>
