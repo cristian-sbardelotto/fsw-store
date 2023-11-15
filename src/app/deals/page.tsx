@@ -27,7 +27,7 @@ export default async function DealsPage() {
         Ofertas
       </Badge>
 
-      <div className='grid grid-cols-2 gap-8'>
+      <div className='grid grid-cols-2 gap-8 md:container md:grid-cols-3'>
         {deals.map(product => (
           <ProductItem
             product={computeProductTotalPrice(product)}
