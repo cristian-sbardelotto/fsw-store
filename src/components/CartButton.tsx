@@ -1,8 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
+import { CartContext } from '@/providers/cart';
 import { toast } from 'react-toastify';
 import Button from './ui/button';
 
@@ -11,6 +12,8 @@ import { Loader2 } from 'lucide-react';
 const THREE_SECONDS_IN_MILLISECONDS = 1000 * 3;
 
 export function CartButton() {
+  const { resetProducts } = useContext(CartContext);
+
   const { replace } = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +23,8 @@ export function CartButton() {
 
     setTimeout(() => {
       setIsLoading(false);
+
+      resetProducts();
 
       toast('Compra finalizada com sucesso!', {
         position: 'bottom-center',
