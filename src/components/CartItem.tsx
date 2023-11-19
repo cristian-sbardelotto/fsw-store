@@ -41,8 +41,8 @@ export function CartItem({ product }: CartItemProps) {
           />
         </div>
 
-        <div className='flex flex-col'>
-          <p className='text-xl'>R$ {product.name}</p>
+        <div className='flex flex-col gap-1'>
+          <p className='text-lg'> {product.name}</p>
 
           <div className='flex items-center gap-2'>
             <p className='font-bold text-sm'>
@@ -55,26 +55,24 @@ export function CartItem({ product }: CartItemProps) {
               </p>
             )}
           </div>
-          <div className='flex items-center gap-1'>
+          <div className='flex items-center gap-2'>
             <Button
-              size='icon'
+              size='iconXs'
               variant='outline'
               disabled={product.quantity <= 1}
-              className='w-8 h-8'
               onClick={() => decreaseProductQuantity(product.id)}
             >
-              <MinusIcon size={12} />
+              <MinusIcon size={11} />
             </Button>
 
-            <span className='text-xs'>{product.quantity}</span>
+            <span className='text-sm'>{product.quantity}</span>
 
             <Button
-              size='icon'
+              size='iconXs'
               variant='outline'
-              className='w-8 h-8'
               onClick={() => increaseProductQuantity(product.id)}
             >
-              <PlusIcon size={12} />
+              <PlusIcon size={11} />
             </Button>
           </div>
         </div>
@@ -82,8 +80,9 @@ export function CartItem({ product }: CartItemProps) {
 
       <Button
         size='icon'
-        variant='outline'
+        variant='destructiveOutline'
         onClick={() => handleRemoveProduct(product.id)}
+        className='px-3'
       >
         <TrashIcon size={16} />
       </Button>
