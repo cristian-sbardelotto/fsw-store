@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { ProductWithTotalPriceProps } from '@/types/product';
 
+import { formatPrice } from '@/helpers/product';
 import { DiscountBadge } from './DiscountBadge';
 
 type ProductItemProps = {
@@ -39,17 +40,15 @@ export function ProductItem({ product }: ProductItemProps) {
             {product.discountPercentage > 0 ? (
               <>
                 <p className='font-semibold'>
-                  R$ {product.totalPrice.toFixed(2)}
+                  {formatPrice(product.totalPrice)}
                 </p>
 
                 <p className='opacity-75 line-through text-xs'>
-                  R$ {+product.basePrice.toFixed(2)}
+                  {formatPrice(+product.basePrice)}
                 </p>
               </>
             ) : (
-              <p className='font-semibold'>
-                R$ {+product.basePrice.toFixed(2)}
-              </p>
+              <p className='font-semibold'>{formatPrice(+product.basePrice)}</p>
             )}
           </div>
         </div>

@@ -1,10 +1,12 @@
 'use client';
 
-import { useContext } from 'react';
 import Image from 'next/image';
+import { useContext } from 'react';
 
-import { CartContext, CartProduct } from '@/providers/cart';
 import Button from '@/components/ui/button';
+import { formatPrice } from '@/helpers/product';
+import { CartContext, CartProduct } from '@/providers/cart';
+
 import { MinusIcon, PlusIcon, TrashIcon } from 'lucide-react';
 
 type CartItemProps = {
@@ -33,11 +35,13 @@ export function CartItem({ product }: CartItemProps) {
           <p className='text-xl'>R$ {product.name}</p>
 
           <div className='flex items-center gap-2'>
-            <p className='font-bold text-sm'>{product.totalPrice.toFixed(2)}</p>
+            <p className='font-bold text-sm'>
+              {formatPrice(product.totalPrice)}
+            </p>
 
             {product.discountPercentage > 0 && (
               <p className='opacity-75 line-through text-xs'>
-                R$ {Number(product.basePrice).toFixed(2)}
+                {formatPrice(+product.basePrice)}
               </p>
             )}
           </div>
