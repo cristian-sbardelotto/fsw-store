@@ -1,10 +1,13 @@
 'use client';
 
-import { useContext } from 'react';
 import Image from 'next/image';
+import { useContext } from 'react';
 
-import { CartContext, CartProduct } from '@/providers/cart';
 import Button from '@/components/ui/button';
+import { formatPrice } from '@/helpers/product';
+import { CartContext, CartProduct } from '@/providers/cart';
+import { toast } from 'react-toastify';
+
 import { MinusIcon, PlusIcon, TrashIcon } from 'lucide-react';
 
 type CartItemProps = {
@@ -14,6 +17,15 @@ type CartItemProps = {
 export function CartItem({ product }: CartItemProps) {
   const { increaseProductQuantity, decreaseProductQuantity, removeProduct } =
     useContext(CartContext);
+
+  function handleRemoveProduct(productId: string) {
+    removeProduct(productId);
+
+    toast('Produto removido do carrinho!', {
+      position: 'bottom-center',
+      type: 'success',
+    });
+  }
 
   return (
     <div className='flex items-center justify-between'>
@@ -29,38 +41,38 @@ export function CartItem({ product }: CartItemProps) {
           />
         </div>
 
-        <div className='flex flex-col'>
-          <p className='text-xl'>R$ {product.name}</p>
+        <div className='flex flex-col gap-1'>
+          <p className='text-lg'> {product.name}</p>
 
           <div className='flex items-center gap-2'>
-            <p className='font-bold text-sm'>{product.totalPrice.toFixed(2)}</p>
+            <p className='font-bold text-sm'>
+              {formatPrice(product.totalPrice)}
+            </p>
 
             {product.discountPercentage > 0 && (
               <p className='opacity-75 line-through text-xs'>
-                R$ {Number(product.basePrice).toFixed(2)}
+                {formatPrice(+product.basePrice)}
               </p>
             )}
           </div>
-          <div className='flex items-center gap-1'>
+          <div className='flex items-center gap-2'>
             <Button
-              size='icon'
+              size='iconXs'
               variant='outline'
               disabled={product.quantity <= 1}
-              className='w-8 h-8'
               onClick={() => decreaseProductQuantity(product.id)}
             >
-              <MinusIcon size={12} />
+              <MinusIcon size={11} />
             </Button>
 
-            <span className='text-xs'>{product.quantity}</span>
+            <span className='text-sm'>{product.quantity}</span>
 
             <Button
-              size='icon'
+              size='iconXs'
               variant='outline'
-              className='w-8 h-8'
               onClick={() => increaseProductQuantity(product.id)}
             >
-              <PlusIcon size={12} />
+              <PlusIcon size={11} />
             </Button>
           </div>
         </div>
@@ -68,8 +80,9 @@ export function CartItem({ product }: CartItemProps) {
 
       <Button
         size='icon'
-        variant='outline'
-        onClick={() => removeProduct(product.id)}
+        variant='destructiveOutline'
+        onClick={() => handleRemoveProduct(product.id)}
+        className='px-3'
       >
         <TrashIcon size={16} />
       </Button>

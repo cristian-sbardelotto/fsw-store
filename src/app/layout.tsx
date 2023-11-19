@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { AuthProvider } from '@/providers/auth';
 import { CartContextProvider } from '@/providers/cart';
+import { ToastProvider } from '@/providers/toast';
 import './globals.css';
 
 const poppins = Poppins({
@@ -25,14 +26,16 @@ export default function RootLayout({
   return (
     <html lang='pt-br'>
       <body className={`${poppins.className} flex flex-col`}>
-        <AuthProvider>
-          <CartContextProvider>
-            <Header />
-            <div className='flex-1'>{children}</div>
+        <ToastProvider>
+          <AuthProvider>
+            <CartContextProvider>
+              <Header />
+              <div className='flex-1'>{children}</div>
 
-            <Footer />
-          </CartContextProvider>
-        </AuthProvider>
+              <Footer />
+            </CartContextProvider>
+          </AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

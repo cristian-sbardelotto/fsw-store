@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 
+import { computeProductTotalPrice, formatPrice } from '@/helpers/product';
 import { CartContext } from '@/providers/cart';
+import { CartButton } from './CartButton';
+import { CartItem } from './CartItem';
 import { Badge } from './ui/Badge';
+import { ScrollArea } from './ui/ScrollArea';
+import { Separator } from './ui/Separator';
 
 import { ShoppingCartIcon } from 'lucide-react';
-import { CartItem } from './CartItem';
-import { computeProductTotalPrice } from '@/helpers/product';
-import { Separator } from './ui/Separator';
-import { ScrollArea } from './ui/ScrollArea';
-import Button from '@/components/ui/button';
 
 export function ShoppingCart() {
   const { products, total, subTotal, totalDiscount } = useContext(CartContext);
@@ -50,7 +50,7 @@ export function ShoppingCart() {
 
             <div className='flex items-center justify-between text-xs'>
               <p>Subtotal</p>
-              <p>R$ {subTotal.toFixed(2)}</p>
+              <p>{formatPrice(subTotal)}</p>
             </div>
 
             <Separator />
@@ -64,20 +64,18 @@ export function ShoppingCart() {
 
             <div className='flex items-center justify-between text-xs'>
               <p>Descontos</p>
-              <p>- R$ {totalDiscount.toFixed(2)}</p>
+              <p>- {formatPrice(totalDiscount)}</p>
             </div>
 
             <Separator />
 
             <div className='flex items-center justify-between text-sm font-bold'>
               <p>Total</p>
-              <p>R$ {total.toFixed(2)}</p>
+              <p>{formatPrice(total)}</p>
             </div>
           </div>
 
-          <Button className='uppercase font-bold rounded-xl mt-7'>
-            Finalizar Compra
-          </Button>
+          <CartButton />
         </>
       )}
     </div>

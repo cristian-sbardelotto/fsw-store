@@ -1,11 +1,13 @@
 'use client';
 
-import { useState, useContext } from 'react';
+import { useContext, useState } from 'react';
 
-import { ProductWithTotalPriceProps } from '@/types/product';
 import Button from '@/components/ui/button';
-import { DiscountBadge } from './DiscountBadge';
+import { formatPrice } from '@/helpers/product';
 import { CartContext } from '@/providers/cart';
+import { ProductWithTotalPriceProps } from '@/types/product';
+import { toast } from 'react-toastify';
+import { DiscountBadge } from './DiscountBadge';
 
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
@@ -20,6 +22,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
   function handleAddProduct() {
     addProduct({ ...product, quantity });
+
+    toast('Produto adicionado ao carrinho!', {
+      position: 'bottom-center',
+      type: 'success',
+    });
   }
 
   return (
@@ -28,7 +35,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
       <div className='flex items-center gap-2'>
         <h3 className='text-xl font-bold '>
-          R$ {product.totalPrice.toFixed(2)}
+          {formatPrice(product.totalPrice)}
         </h3>
         {product.discountPercentage > 0 && (
           <DiscountBadge>{product.discountPercentage}</DiscountBadge>
@@ -37,7 +44,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
       {product.discountPercentage > 0 && (
         <p className='text-sm opacity-75 line-through font-light'>
-          De R${Number(product.basePrice).toFixed(2)}
+          De {formatPrice(+product.basePrice)}
         </p>
       )}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
 import { ProductWithTotalPriceProps } from '@/types/product';
 
@@ -20,6 +20,7 @@ type CartContextProps = {
   increaseProductQuantity(productId: string): void;
   decreaseProductQuantity(productId: string): void;
   removeProduct(productId: string): void;
+  resetProducts(): void;
 };
 
 export const CartContext = createContext<CartContextProps>({
@@ -34,6 +35,7 @@ export const CartContext = createContext<CartContextProps>({
   increaseProductQuantity: () => {},
   decreaseProductQuantity: () => {},
   removeProduct: () => {},
+  resetProducts: () => {},
 });
 
 type CartContextProviderProps = {
@@ -136,6 +138,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     );
   }
 
+  function resetProducts() {
+    setProducts([]);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -150,6 +156,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProduct,
+        resetProducts,
       }}
     >
       {children}
