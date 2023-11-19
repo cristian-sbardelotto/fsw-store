@@ -6,6 +6,7 @@ import Button from '@/components/ui/button';
 import { formatPrice } from '@/helpers/product';
 import { CartContext } from '@/providers/cart';
 import { ProductWithTotalPriceProps } from '@/types/product';
+import { toast } from 'react-toastify';
 import { DiscountBadge } from './DiscountBadge';
 
 import { MinusIcon, PlusIcon } from 'lucide-react';
@@ -21,6 +22,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
   function handleAddProduct() {
     addProduct({ ...product, quantity });
+
+    toast('Produto adicionado ao carrinho!', {
+      position: 'bottom-center',
+      type: 'success',
+    });
   }
 
   return (

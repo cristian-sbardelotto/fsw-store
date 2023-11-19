@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import Button from '@/components/ui/button';
 import { formatPrice } from '@/helpers/product';
 import { CartContext, CartProduct } from '@/providers/cart';
+import { toast } from 'react-toastify';
 
 import { MinusIcon, PlusIcon, TrashIcon } from 'lucide-react';
 
@@ -16,6 +17,15 @@ type CartItemProps = {
 export function CartItem({ product }: CartItemProps) {
   const { increaseProductQuantity, decreaseProductQuantity, removeProduct } =
     useContext(CartContext);
+
+  function handleRemoveProduct(productId: string) {
+    removeProduct(productId);
+
+    toast('Produto removido do carrinho!', {
+      position: 'bottom-center',
+      type: 'success',
+    });
+  }
 
   return (
     <div className='flex items-center justify-between'>
@@ -73,7 +83,7 @@ export function CartItem({ product }: CartItemProps) {
       <Button
         size='icon'
         variant='outline'
-        onClick={() => removeProduct(product.id)}
+        onClick={() => handleRemoveProduct(product.id)}
       >
         <TrashIcon size={16} />
       </Button>
