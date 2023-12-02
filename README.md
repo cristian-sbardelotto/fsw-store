@@ -11,8 +11,7 @@ Welcome to FullStack Week Store!
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#learning">What I've Learned</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#installation">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#layout">Layout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#todo">To-do</a>&nbsp;&nbsp;&nbsp;
+  <a href="#layout">Layout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
@@ -90,16 +89,6 @@ pnpm dev
 ```
 
 <br/>
-
-<h1 id='todo'>✅ To-Do List</h1>
-
-<h3>
-  - ✅ Mobile layout <br>
-  <br>
-  - 🛠️ Desktop layout<br>
-  <br>
-  - 🛠️ Success purchase route
-</h3>
 
 <div align='center'>
 
